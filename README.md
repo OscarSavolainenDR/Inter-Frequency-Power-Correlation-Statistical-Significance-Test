@@ -1,1 +1,1 @@
-# Inter-Frequency-Correlation-Statistical-Significance-Test
+# Inter-Frequency-Power-Correlation-Statistical-Significance-Test
