@@ -14,7 +14,7 @@ function [r,f,computation_times] = calculate_inter_scale_correlation_matrix(x, F
     % to be involved in every inter-scale correlation calculation. Because
     % some values are outside of the Cone of Influence, some scales have
     % fewer reliable values that others. If a scale contains fewer than 
-    % thresh_for_corr_inclusion * length(x) values inside the COI, then it
+    % (1-thresh_for_corr_inclusion) * length(x) values inside the COI, then it
     % is not included in the inter-scale correlation matrix. The choice of
     % this value will depend largely on each user's desired number of
     % samples per inter-scale correlation calculation.
@@ -29,7 +29,7 @@ function [r,f,computation_times] = calculate_inter_scale_correlation_matrix(x, F
     % This function can be used for any time series, given the sampling
     % rate and desired frequency limits of the Wavelet Power Spectrum.
     % 
-    % All code is available at XXX.
+    % All code is available at https://github.com/OscarSavolainen/Inter-Frequency-Power-Correlation-Statistical-Significance-Test.
     
 
     %% Perform Continuous Wavelet Transform (CWT) on x
