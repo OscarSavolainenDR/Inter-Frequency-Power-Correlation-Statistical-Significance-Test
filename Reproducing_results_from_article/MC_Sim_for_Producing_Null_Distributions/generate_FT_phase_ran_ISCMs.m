@@ -72,6 +72,9 @@ function generate_FT_phase_ran_ISCMs(PBS_array_index, cores, max_MCs_per_channel
     clear SI_CSD_Broadband neural_time
 %     x_sample_pre_processed = x(1:10000);
 
+    % Zero center
+    x = x - mean(x);
+
     %% Perform Continuous Wavelet Transform (CWT) on x
     hh = tic;
     [S_neural,f,coi] = cwt(x,'morse',Fs_neural,'FrequencyLimits',CWT_freq_limits); % S: Wavelet Coefficients, f: scale vector, coi : Cone of Influence.
