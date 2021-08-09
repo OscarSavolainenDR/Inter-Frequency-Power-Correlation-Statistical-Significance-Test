@@ -76,6 +76,9 @@ function generate_IAAFT_phase_ran_ISCMs(PBS_array_index_orig, cores, max_MCs_per
     end
     clear SI_CSD_Broadband neural_time
     x_sample_pre_processed = x(1:10000);
+    
+    % Zero center
+    x = x - mean(x);
 
     %% Perform Continuous Wavelet Transform (CWT) on x
     hh = tic;
