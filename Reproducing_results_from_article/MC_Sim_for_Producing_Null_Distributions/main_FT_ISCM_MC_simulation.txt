@@ -1,4 +1,4 @@
-### For producing FT phase-randomisation derived ISCMs for the statistical testing 
+### For producing FT phase-randomissation derived ISCMs for the statistical testing 
 ### of the neural inter-frequency correlations. Runs in a HPC cluster. 
 ### This file should be re-saved as a .pbs file, and dos2unix formatting may be required
 ### to run this script on Linux.
