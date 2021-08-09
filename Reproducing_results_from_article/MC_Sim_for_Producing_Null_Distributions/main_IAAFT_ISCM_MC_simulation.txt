@@ -3,7 +3,8 @@
 ### This file should be re-saved as a .pbs file, and dos2unix formatting may be required
 ### to run this script on Linux.
 
-#PBS -J 1-2400 ### how many parallel jobs, depends on the number of parallel runs,  how many channels, and how many sessions: (parralel_runs*nb_channels*nb_sessions)
+### How many parallel jobs, depends on the number of parallel runs,  how many channels, and how many sessions: (parralel_runs*nb_channels*nb_sessions)
+#PBS -J 1-2400
 #PBS -l walltime=24:00:00
 #PBS -l select=1:ncpus=08:mem=80gb
 
