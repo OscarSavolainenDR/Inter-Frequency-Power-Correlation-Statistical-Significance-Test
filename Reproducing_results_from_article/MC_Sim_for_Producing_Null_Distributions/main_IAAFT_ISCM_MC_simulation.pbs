@@ -1,0 +1,20 @@
+### For producing IAAFT phase-randomissation derived ISCMs for the statistical testing 
+### of the neural inter-frequency correlations. Runs in a HPC cluster. 
+### This file should be re-saved as a .pbs file, and dos2unix formatting may be required
+### to run this script on Linux.
+
+### How many parallel jobs, depends on the number of parallel runs,  how many channels, and how many sessions: (parralel_runs*nb_channels*nb_sessions)
+#PBS -J 1-2400
+#PBS -l walltime=24:00:00
+#PBS -l select=1:ncpus=08:mem=80gb
+
+##Load needed modules
+module load fix_sysconf
+export OMP_NUM_THREADS=08 ### how many cores to limit MATLAB to
+module load matlab/R2020a ### or whatever version of MATLAB
+
+export MATLAB_PREFDIR=$TMPDIR/prefs
+export FUNCS_DIR=$HOME/Functions ### directory where functions are stored
+
+# Workflow
+matlab -nosplash -nodesktop -nodisplay -r "fprintf(['MATLAB LOADED, ',num2str(getenv('OMP_NUM_THREADS')),' \n']); LASTN = maxNumCompThreads(str2num(getenv('OMP_NUM_THREADS'))); MCs_per_channel = 30; nb_channels = 20; MC_index_offset = 0; parallel_runs = 8; N = maxNumCompThreads(); fprintf(['Number of cores: ',num2str(N),'\n']); fprintf(['Previous no of cores: ',num2str(LASTN),'\n']); addpath(genpath(getenv('FUNCS_DIR'))); generate_IAAFT_phase_ran_ISCMs(str2num(getenv('PBS_ARRAY_INDEX')), N, MCs_per_channel, nb_channels, MC_index_offset, parallel_runs); quit"
