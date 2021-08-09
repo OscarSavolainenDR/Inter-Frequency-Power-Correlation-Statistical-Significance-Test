@@ -74,6 +74,9 @@ function [WN_ISCM_individual,f] = generate_WN_ISCMs(seed_1,seed_2)
     n_noise = find_matching_end(x_noise,clipping_epsilon);
     x_noise = x_noise(1:n_noise);
     
+    % Zero center
+    x_noise = x_noise - mean(x_noise);
+    
 %     %% Pre-whiten x_noise
 %     x_noise = whitening(x_noise, Fs_neural);
 %     
