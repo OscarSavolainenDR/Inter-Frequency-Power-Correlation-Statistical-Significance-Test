@@ -5,18 +5,17 @@
 #PBS -l walltime=01:00:00
 #PBS -l select=1:ncpus=10:mem=120gb
 #PBS -J 1-1000
-###100
 
 ## RNG parameters and random sequence length
 ## 8544922 samples -> 350 s @ at Fs of 24414... Hz
 ## 9765625 samples -> 400 s.
 ## 12207031 samples -> 500 s.
-signal_length=12207031 ## SET SIGNAL LENGTH HERE IN SAMPLES (E.G. 500S X 24414.. HZ = 12207031)
+signal_length=8544922 ## SET SIGNAL LENGTH HERE IN SAMPLES (E.G. 500S X 24414.. HZ = 12207031)
 seed_1=1 ## The RNG state constant, can be any arbitrary constant but should be fixed across jobs for ease of reproduction
 
 ## Navigate to RNG folder
 cd "$HOME/Functions/random_PCG/random_PCG_attempt/" ##  THE C FUNCTIONS FOR PCG RANDOM NUMBER GENERATION SHOULD BE PLACED HERE, OR THIS PATH SHOULD BE RENAMED
- 
+
 ## Generate and store random sequence
 seed_2=$PBS_ARRAY_INDEX+$signal_length # RNG sequence index
 myShellVar=`./to_shell_rand_pcg32 $signal_length $seed_1 $seed_2` # Generate random sequence
